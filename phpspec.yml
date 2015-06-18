@@ -1,0 +1,4 @@
+suites:
+  library_suite:
+    namespace: Artesaos\Defender
+    psr4_prefix: Artesaos\Defender
