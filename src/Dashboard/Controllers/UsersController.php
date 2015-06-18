@@ -14,9 +14,21 @@ class UsersController extends Controller
         $this->userRepo = $userRepo;
     }
 
+    /**
+     * [index description]
+     * 
+     * @return [type] [description]
+     */
     public function index()
     {
         $users = $this->userRepo->all();
+
+        if (count($users) === 0)
+        {
+            flash()->error('Nenhum usuário cadastrado no sistema.');
+
+            return redirect('defender');
+        }
 
         return view('artesaos::dashboard.users.index', compact('users'));
     }
@@ -30,6 +42,13 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = $this->userRepo->findById($id);
+
+        if (is_null($user))
+        {
+            flash()->error('Usuário não encontrado.');
+
+            return redirect('defender/users');
+        }
 
         return view('artesaos::dashboard.users.show', compact('user'));
     }

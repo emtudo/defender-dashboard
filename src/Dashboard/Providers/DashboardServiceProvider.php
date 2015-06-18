@@ -20,6 +20,11 @@ class DashboardServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerBindings();
+
+        if ( ! isset($this->app['flash']))
+        {
+            $this->app->register('Laracasts\Flash\FlashServiceProvider');
+        }
     }
 
     public function provides()

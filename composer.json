@@ -6,7 +6,9 @@
         }
     },
     "require": {
-        "illuminate/support": "~5.0|~5.1"
+        "illuminate/support": "~5.0|~5.1",
+        "artesaos/defender": "~0.2",
+        "laracasts/flash": "~1.3"
     },
     "require-dev": {
         "phpunit/phpunit": "4.*",

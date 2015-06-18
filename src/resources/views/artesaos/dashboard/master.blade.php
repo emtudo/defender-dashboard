@@ -3,11 +3,7 @@
 <head>
     <title>Defender Dashboard</title>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
-    <style type="text/css">
-        body {
-            padding-top: 70px;
-        }
-    </style>
+    <style type="text/css">body { padding-top: 70px; }</style>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -32,7 +28,10 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <div class="container">@yield('content')</div>
+    <div class="container">
+      @include('flash::message')
+      @yield('content')
+    </div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
