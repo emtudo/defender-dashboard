@@ -11,7 +11,7 @@ class DashboardServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->requireRoutesFile();
+        $this->registerRoutes();
         $this->loadDashboardViews();
         $this->loadDashboardTranslations();
         $this->publishConfiguration();
@@ -49,11 +49,18 @@ class DashboardServiceProvider extends ServiceProvider
     }
 
     /**
-     * Require routes file.
+     * Register routes.
      */
-    protected function requireRoutesFile()
+    protected function registerRoutes()
     {
-        include __DIR__.'/../../resources/routes.php';
+        /** @var \Illuminate\Routing\Router $router */
+        $router = $this->app['router'];
+
+        //TODO: Made that prefix configurable
+        
+        $router->group(['prefix' => 'defender'], function () use ($router) {
+            require __DIR__.'/../../resources/routes.php';
+        });
     }
 
     /**
