@@ -21,8 +21,7 @@ class DashboardServiceProvider extends ServiceProvider
     {
         $this->registerBindings();
 
-        if ( ! isset($this->app['flash']))
-        {
+        if (! isset($this->app['flash'])) {
             $this->app->register('Laracasts\Flash\FlashServiceProvider');
         }
     }
@@ -36,13 +35,17 @@ class DashboardServiceProvider extends ServiceProvider
     {
         $userClass = $this->app['config']->get('auth.model');
 
-        $this->app->singleton('defender.user', function($app) use ($userClass) {
-            return new EloquentUserRepository($app, $app->make($userClass));
-        });
+        $this->app->singleton(
+            'defender.user', function ($app) use ($userClass) {
+                return new EloquentUserRepository($app, $app->make($userClass));
+            }
+        );
 
-        $this->app->singleton('Artesaos\Defender\Contracts\UserRepository', function($app) {
-            return $app['defender.user'];
-        });
+        $this->app->singleton(
+            'Artesaos\Defender\Contracts\UserRepository', function ($app) {
+                return $app['defender.user'];
+            }
+        );
     }
 
     /**
@@ -50,7 +53,7 @@ class DashboardServiceProvider extends ServiceProvider
      */
     protected function requireRoutesFile()
     {
-        require __DIR__.'/../../resources/routes.php';
+        include __DIR__.'/../../resources/routes.php';
     }
 
     /**
@@ -73,4 +76,3 @@ class DashboardServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang/artesaos', 'artesaos');
     }
 }
-

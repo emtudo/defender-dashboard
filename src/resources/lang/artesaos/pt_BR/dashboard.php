@@ -12,7 +12,7 @@ return [
 
         'show' => [
 
-            'heading' => 'Detalhes do Usuário'  
+            'heading' => 'Detalhes do Usuário'
 
         ]
 
