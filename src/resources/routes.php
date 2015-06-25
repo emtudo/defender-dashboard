@@ -1,6 +1,6 @@
 <?php
 
-/** @var \Illuminate\Routing\Router $route */
+/** @var \Illuminate\Routing\Router $router */
 
 $router->get('/', [
     'as'   => 'defender.dashboard.index',
