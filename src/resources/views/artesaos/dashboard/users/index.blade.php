@@ -6,20 +6,25 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-user"></span>
                         {{ trans('artesaos::dashboard.users.index.heading') }}
                     </h3>
                 </div>
-                <div class="panel-body">
-                    <ul class="list-group">
+                <table class="table table-bordered">
+                    <tbody>
                         @foreach($users as $user)
-                            <a href="{{ url('defender/users', $user->id) }}" class="list-group-item">
-                                {{ $user->name }}
-                            </a>
+                            <tr>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td class="text-center">{{ $user->created_at }}</td>
+                                <td class="text-center">// TODO Actions</td>
+                            </tr>
                         @endforeach
-                    </ul>
-                </div>
+                    </tbody>
+                </table>
+                <!-- Pagination Render -->
+                <div class="pull-right">{!! $users->render() !!}</div>
             </div>
-            <div class="pull-right">{!! $users->render() !!}</div>
         </div>
     </div>
 @endsection
