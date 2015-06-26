@@ -6,13 +6,16 @@
         <div class="col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Usuário: {{ $user->name }}</h3>
+                    <h3 class="panel-title">
+                        {{ trans('artesaos::dashboard.users.show.heading') }}
+                        {{ $user->name }}
+                    </h3>
                 </div>
                 <div class="panel-body">
                     <ul>
-                        <li><strong>Email:</strong> {{ $user->email }}</li>
-                        <li><strong>Data de Criação:</strong> {{ $user->created_at }}</li>
-                        <li><strong>Última Atualização:</strong> {{ $user->updated_at }}</li>
+                        <li><strong>{{ trans('artesaos::dashboard.users.show.email') }}:</strong> {{ $user->email }}</li>
+                        <li><strong>{{ trans('artesaos::dashboard.users.show.created_at') }}:</strong> {{ $user->created_at }}</li>
+                        <li><strong>{{ trans('artesaos::dashboard.users.show.updated_at') }}:</strong> {{ $user->updated_at }}</li>
                     </ul>
                 </div>
             </div>
@@ -23,7 +26,7 @@
         <div class="col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Grupos</h3>
+                    <h3 class="panel-title">{{ trans('artesaos::dashboard.general.roles') }}</h3>
                 </div>
                 <div class="panel-body">
                     @if(count($user->roles) > 0)
@@ -34,7 +37,7 @@
                         @endforeach
                     @else
                         <span class="text-danger">
-                            <strong>Nenhum grupo atribuído para este usuário.</strong>
+                            <strong>{{ trans('artesaos::dashboad.users.show.roles.empty') }}</strong>
                         </span>
                     @endif
                 </div>
@@ -43,7 +46,7 @@
         <div class="col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Permissões</h3>
+                    <h3 class="panel-title">{{ trans('artesaos::dashboard.general.permissions') }}</h3>
                 </div>
                 <div class="panel-body">
                     @if (count($user->permissions) > 0)
@@ -54,7 +57,7 @@
                         @endforeach
                     @else
                         <span class="text-danger">
-                            <strong>Este usuário não possui permissões específicas atribuídas.</strong>
+                            <strong>{{ trans('artesaos::dashboard.users.show.permissions.empty') }}</strong>
                         </span>
                     @endif
                 </div>
@@ -65,12 +68,12 @@
     <!-- Actions -->
     <div class="text-right">
         <div class="btn-group">
-            <button class="btn btn-warning">
-                <span class="glyphicon glyphicon-pencil"></span> Editar
-            </button>
-            <button class="btn btn-danger">
-                <span class="glyphicon glyphicon-remove"></span> Excluir
-            </button>
+            <a href="{{ url('defender/users/' . $user->id . '/edit')  }}" class="btn btn-warning">
+                <span class="glyphicon glyphicon-pencil"></span> {{ trans('artesaos::dashboard.general.actions.edit') }}
+            </a>
+            <a href="#" class="btn btn-danger">
+                <span class="glyphicon glyphicon-remove"></span> {{ trans('artesaos::dashboard.general.actions.delete') }}
+            </a>
         </div>
     </div>
     <!--/Actions -->

@@ -18,18 +18,14 @@ class DashboardServiceProvider extends ServiceProvider
     }
 
     public function register()
-    {
-        $this->registerBindings();
+	{
+		$this->registerBindings();
 
-        if (! isset($this->app['flash'])) {
-            $this->app->register('Laracasts\Flash\FlashServiceProvider');
-        }
-    }
-
-    public function provides()
-    {
-        return ['defender.user'];
-    }
+		if ( ! isset($this->app['flash']))
+		{
+			$this->app->register('Laracasts\Flash\FlashServiceProvider');
+		}
+	}
 
     protected function registerBindings()
     {
@@ -68,6 +64,8 @@ class DashboardServiceProvider extends ServiceProvider
      */
     protected function publishConfiguration()
     {
+		# Publish config
+		# Settings like prefix definition
     }
 
     /**
@@ -82,4 +80,9 @@ class DashboardServiceProvider extends ServiceProvider
     {
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang/artesaos', 'artesaos');
     }
+
+	public function provides()
+	{
+		return ['defender.user'];
+	}
 }

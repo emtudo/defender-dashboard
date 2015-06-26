@@ -27,11 +27,11 @@ class UsersController extends Controller
         $this->userRepo = $userRepo;
     }
 
-    /**
-     * [index description]
-     *
-     * @return [type] [description]
-     */
+	/**
+	 * [index description]
+	 *
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View [type] [description]
+	 */
     public function index()
     {
         $users = $this->userRepo->all();
@@ -45,12 +45,12 @@ class UsersController extends Controller
         return view('artesaos::dashboard.users.index', compact('users'));
     }
 
-    /**
-     * Shows a single user
-     *
-     * @param  [type] $id [description]
-     * @return [type]     [description]
-     */
+	/**
+	 * Shows a single user
+	 *
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View [type]
+	 */
     public function show($id)
     {
         $user = $this->userRepo->findById($id);
