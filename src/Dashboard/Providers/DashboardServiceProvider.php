@@ -11,7 +11,7 @@ class DashboardServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->requireRoutesFile();
+        $this->registerRoutes();
         $this->loadDashboardViews();
         $this->loadDashboardTranslations();
         $this->publishConfiguration();
@@ -21,8 +21,7 @@ class DashboardServiceProvider extends ServiceProvider
     {
         $this->registerBindings();
 
-        if ( ! isset($this->app['flash']))
-        {
+        if (! isset($this->app['flash'])) {
             $this->app->register('Laracasts\Flash\FlashServiceProvider');
         }
     }
@@ -36,21 +35,32 @@ class DashboardServiceProvider extends ServiceProvider
     {
         $userClass = $this->app['config']->get('auth.model');
 
-        $this->app->singleton('defender.user', function($app) use ($userClass) {
-            return new EloquentUserRepository($app, $app->make($userClass));
-        });
+        $this->app->singleton(
+            'defender.user', function ($app) use ($userClass) {
+                return new EloquentUserRepository($app, $app->make($userClass));
+            }
+        );
 
-        $this->app->singleton('Artesaos\Defender\Contracts\UserRepository', function($app) {
-            return $app['defender.user'];
-        });
+        $this->app->singleton(
+            'Artesaos\Defender\Contracts\UserRepository', function ($app) {
+                return $app['defender.user'];
+            }
+        );
     }
 
     /**
-     * Require routes file.
+     * Register routes.
      */
-    protected function requireRoutesFile()
+    protected function registerRoutes()
     {
-        require __DIR__.'/../../resources/routes.php';
+        /** @var \Illuminate\Routing\Router $router */
+        $router = $this->app['router'];
+
+        //TODO: Made that prefix configurable
+        
+        $router->group(['prefix' => 'defender'], function () use ($router) {
+            require __DIR__.'/../../resources/routes.php';
+        });
     }
 
     /**
@@ -73,4 +83,3 @@ class DashboardServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang/artesaos', 'artesaos');
     }
 }
-

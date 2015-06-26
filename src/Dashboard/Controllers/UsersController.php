@@ -29,15 +29,14 @@ class UsersController extends Controller
 
     /**
      * [index description]
-     * 
+     *
      * @return [type] [description]
      */
     public function index()
     {
         $users = $this->userRepo->all();
 
-        if (count($users) === 0)
-        {
+        if (count($users) === 0) {
             flash()->error('Nenhum usuário cadastrado no sistema.');
 
             return redirect('defender');
@@ -48,7 +47,7 @@ class UsersController extends Controller
 
     /**
      * Shows a single user
-     * 
+     *
      * @param  [type] $id [description]
      * @return [type]     [description]
      */
@@ -56,8 +55,7 @@ class UsersController extends Controller
     {
         $user = $this->userRepo->findById($id);
 
-        if (is_null($user))
-        {
+        if (is_null($user)) {
             flash()->error('Usuário não encontrado.');
 
             return redirect('defender/users');
@@ -73,7 +71,6 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
-
     }
 
     public function edit($id)
@@ -87,6 +84,6 @@ class UsersController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        # code...
+        // code...
     }
 }

@@ -15,5 +15,5 @@ class EloquentUserRepository extends AbstractEloquentRepository implements UserR
     public function findById($id)
     {
         return $this->model->with('roles', 'permissions')->find($id);
-    }   
+    }
 }
