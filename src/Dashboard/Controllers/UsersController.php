@@ -5,10 +5,23 @@ namespace Artesaos\Defender\Controllers;
 use Artesaos\Defender\Contracts\UserRepository;
 use Illuminate\Foundation\Http\FormRequest as Request;
 
+/**
+ * 
+ */
 class UsersController extends Controller
 {
+    /**
+     * The UserRepository contract
+     * 
+     * @var \Artesaos\Defender\Contracts\UserRepository
+     */
     protected $userRepo;
 
+    /**
+     * UserController construct
+     * 
+     * @param UserRepository $userRepo [description]
+     */
     public function __construct(UserRepository $userRepo)
     {
         $this->userRepo = $userRepo;

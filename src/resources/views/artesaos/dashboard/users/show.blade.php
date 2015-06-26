@@ -29,7 +29,7 @@
                     @if(count($user->roles) > 0)
                         @foreach ($user->roles as $role)
                             <a href="{{ url('defender/roles', $role->id) }}" class="label label-info">
-                                {{ '#' . $role->id . ' ' . $role->name }}
+                                {{ $role->name }}
                             </a>
                         @endforeach
                     @else
@@ -47,15 +47,32 @@
                 </div>
                 <div class="panel-body">
                     @if (count($user->permissions) > 0)
-
+                        @foreach ($permission as $permissions)
+                            <a href="{{ url('defender/permissions', $permission->id) }}" class="label label-info">
+                                {{ $permission->readable_name }}
+                            </a>
+                        @endforeach
                     @else
                         <span class="text-danger">
-                            <strong>Este usuário não possui permissões de usuário.</strong>
+                            <strong>Este usuário não possui permissões específicas atribuídas.</strong>
                         </span>
                     @endif
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Actions -->
+    <div class="text-right">
+        <div class="btn-group">
+            <button class="btn btn-warning">
+                <span class="glyphicon glyphicon-pencil"></span> Editar
+            </button>
+            <button class="btn btn-danger">
+                <span class="glyphicon glyphicon-remove"></span> Excluir
+            </button>
+        </div>
+    </div>
+    <!--/Actions -->
     
 @endsection
