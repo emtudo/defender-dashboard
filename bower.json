@@ -1,0 +1,27 @@
+{
+  "name": "defender-dashboard",
+  "version": "1.0.0",
+  "homepage": "https://github.com/artesaos-lab/defender-dashboard",
+  "authors": [
+    "Andreo Vieira <andreoav@gmail.com>"
+  ],
+  "description": "Defender Dashboard",
+  "keywords": [
+    "acl",
+    "dashboard",
+    "defender",
+    "laravel"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5"
+  }
+}
