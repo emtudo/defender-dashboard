@@ -5,47 +5,72 @@ namespace Artesaos\Defender\Tests;
 class LangTest extends TestCase
 {
     /**
+     * Languages dir.
+     *
+     * @var string
+     */
+    protected $langDir = __DIR__."/../src/resources/lang/artesaos";
+
+
+    /**
      * Tests every index on each array of locales.
      *
      * @return void
      */
     public function test_locales_should_have_same_indexes()
     {
-        /** @var string Languages directory */
-        $langsDir = __DIR__."/../src/resources/lang/artesaos";
 
         /** @var array indexed locales */
         $files = [
-            "en" =>    $langsDir.'/en/dashboard.php',
-            "pt_BR" => $langsDir.'/pt_BR/dashboard.php',
+            "en" =>    $this->langDir.'/en/dashboard.php',
+            "pt_BR" => $this->langDir.'/pt_BR/dashboard.php',
         ];
 
         /** @var array base locale */
-        $base_lang = $this->loadLocaleFile($files['pt_BR']);
+        $base_lang = $this->loadLangFile($files['pt_BR']);
 
         /** @var int total of indexes of the base lang  */
         $indexes = array_keys($base_lang);
 
         foreach ($files as $langFile) {
-            $lang = $this->loadLocaleFile($langFile);
-
-            foreach ($indexes as $key) {
-                $this->assertArrayHasKey($key, $lang, sprintf('Missing translation to %s.', $key));
-            }
+            $this->assertLangHasIndexes($langFile, $indexes);
         }
     }
 
     /**
-     * Loads an array doted locale file.
+     * Assert the given lang file indexes are same on given array of indexes.
+     *
+     * @param  string $langFile
+     * @param  array  $indexes
+     * @param  string|null $message
+     *
+     * @return void
+     */
+    public function assertLangHasIndexes($langFile, array &$indexes)
+    {
+        $lang = $this->loadLangFile($langFile);
+
+        $langRelativePath = $this->removeDirFromPath($langFile);
+
+        foreach ($indexes as $key) {
+            $this->assertArrayHasKey($key, $lang, sprintf('Missing translation to %s on %s.', $key, $langRelativePath));
+        }
+
+        $this->assertEquals(count($indexes), count($lang), sprintf('Some indexes are missing or exceeded on %s.', $langRelativePath));
+    }
+
+
+    /**
+     * Loads an array doted language file.
      *
      * @param  string $file path to the file
      *
      * @return array       An array doted
      */
-    public function loadLocaleFile($file)
+    public function loadLangFile($file)
     {
-        $locale = require($file);
+        $lang = require($file);
 
-        return array_dot($locale);
+        return array_dot($lang);
     }
 }
