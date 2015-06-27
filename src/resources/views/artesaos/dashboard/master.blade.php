@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Defender Dashboard</title>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url('artesaos/dashboard/css/vendor.min.css') }}">
     <style type="text/css">body { padding-top: 70px; }</style>
 </head>
 <body>
@@ -32,7 +32,6 @@
       @include('flash::message')
       @yield('content')
     </div>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ url('artesaos/dashboard/js/vendor.min.js') }}"></script>
 </body>
 </html>

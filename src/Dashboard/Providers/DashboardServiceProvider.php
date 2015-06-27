@@ -14,7 +14,8 @@ class DashboardServiceProvider extends ServiceProvider
         $this->registerRoutes();
         $this->loadDashboardViews();
         $this->loadDashboardTranslations();
-        $this->publishConfiguration();
+        $this->publishDashboardConfiguration();
+        $this->publishDashboardAssets();
     }
 
     public function register()
@@ -62,10 +63,17 @@ class DashboardServiceProvider extends ServiceProvider
     /**
      * Publish dashboard configuration.
      */
-    protected function publishConfiguration()
+    protected function publishDashboardConfiguration()
     {
 		# Publish config
 		# Settings like prefix definition
+    }
+
+    protected function publishDashboardAssets()
+    {
+        $this->publishes([
+            __DIR__.'/../../resources/assets' => public_path('artesaos/dashboard')
+        ], 'assets');
     }
 
     /**
