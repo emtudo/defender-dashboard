@@ -4,6 +4,11 @@ namespace Artesaos\Defender\Tests;
 
 class LangTest extends TestCase
 {
+    /**
+     * Tests every index on each array of locales.
+     *
+     * @return void
+     */
     public function test_locales_should_have_same_indexes()
     {
         /** @var string Languages directory */
@@ -16,19 +21,31 @@ class LangTest extends TestCase
         ];
 
         /** @var array base locale */
-        $base_lang = array_dot(require($files['pt_BR']));
+        $base_lang = $this->loadLocaleFile($files['pt_BR']);
 
         /** @var int total of indexes of the base lang  */
         $indexes = array_keys($base_lang);
 
-        $message = 'Missing translation to %s.';
-
         foreach ($files as $langFile) {
-            $lang = array_dot(require($langFile));
+            $lang = $this->loadLocaleFile($langFile);
 
             foreach ($indexes as $key) {
-                $this->assertArrayHasKey($key, $lang, sprintf($message, $key));
+                $this->assertArrayHasKey($key, $lang, sprintf('Missing translation to %s.', $key));
             }
         }
+    }
+
+    /**
+     * Loads an array doted locale file.
+     *
+     * @param  string $file path to the file
+     *
+     * @return array       An array doted
+     */
+    public function loadLocaleFile($file)
+    {
+        $locale = require($file);
+
+        return array_dot($locale);
     }
 }
