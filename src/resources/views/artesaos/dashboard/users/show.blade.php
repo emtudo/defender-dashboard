@@ -36,9 +36,9 @@
                             </a>
                         @endforeach
                     @else
-                        <span class="text-danger">
+                        <div class="text-danger text-center">
                             <strong>{{ trans('artesaos::dashboad.users.show.roles.empty') }}</strong>
-                        </span>
+                        </div>
                     @endif
                 </div>
             </div>
@@ -56,9 +56,9 @@
                             </a>
                         @endforeach
                     @else
-                        <span class="text-danger">
+                        <div class="text-danger text-center">
                             <strong>{{ trans('artesaos::dashboard.users.show.permissions.empty') }}</strong>
-                        </span>
+                        </div>
                     @endif
                 </div>
             </div>

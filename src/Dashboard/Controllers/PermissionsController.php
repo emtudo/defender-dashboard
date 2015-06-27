@@ -28,7 +28,7 @@ class PermissionsController extends Controller
 	 */
 	public function index()
 	{
-		$permissions = $this->permissionsRepository->getList('readable_name');
+		$permissions = $this->permissionsRepository->paginate(10);
 
 		return view('artesaos::dashboard.permissions.index', compact('permissions'));
 	}
