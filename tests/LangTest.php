@@ -16,16 +16,19 @@ class LangTest extends TestCase
         ];
 
         /** @var array base locale */
-        $base_lang = require($files['pt_BR']);
+        $base_lang = array_dot(require($files['pt_BR']));
 
         /** @var int total of indexes of the base lang  */
-        $total_indexes = count($base_lang, true);
+        $indexes = array_keys($base_lang);
 
+        $message = 'Missing translation to %s.';
 
         foreach ($files as $langFile) {
-            $lang = require($langFile);
+            $lang = array_dot(require($langFile));
 
-            $this->assertEquals($total_indexes, count($lang, true));
+            foreach ($indexes as $key) {
+                $this->assertArrayHasKey($key, $lang, sprintf($message, $key));
+            }
         }
     }
 }
