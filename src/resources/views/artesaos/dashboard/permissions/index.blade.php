@@ -7,6 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-lock"></span>
                         {{ trans('artesaos::dashboard.permissions.index.heading') }}
                     </h3>
                 </div>

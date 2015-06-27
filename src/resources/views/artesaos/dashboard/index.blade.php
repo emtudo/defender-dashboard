@@ -8,10 +8,14 @@
             
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Manage Users</h3>
+                    <h3 class="panel-title">
+                        {{ trans('artesaos::dashboard.index.manage_users') }}
+                    </h3>
                 </div>
                 <div class="panel-body">
-                    <a href="{{ url('defender/users') }}" class="btn btn-default btn-block">Users</a>
+                    <a href="{{ route('defender.dashboard.users') }}" class="btn btn-default btn-block">
+                        {{ trans('artesaos::dashboard.navigation.users') }}
+                    </a>
                 </div>
             </div>
 
@@ -21,10 +25,14 @@
             
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Manage Roles</h3>
+                    <h3 class="panel-title">
+                        {{ trans('artesaos::dashboard.index.manage_roles') }}
+                    </h3>
                 </div>
                 <div class="panel-body">
-                    <a href="{{ url('defender/roles') }}" class="btn btn-default btn-block">Roles</a>
+                    <a href="{{ route('defender.dashboard.roles') }}" class="btn btn-default btn-block">
+                        {{ trans('artesaos::dashboard.navigation.roles') }}
+                    </a>
                 </div>
             </div>
 
@@ -34,10 +42,14 @@
             
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Manage Permissions</h3>
+                    <h3 class="panel-title">
+                        {{ trans('artesaos::dashboard.index.manage_permissions') }}
+                    </h3>
                 </div>
                 <div class="panel-body">
-                    <a href="{{ url('defender/permissions') }}" class="btn btn-default btn-block">Permissions</a>
+                    <a href="{{ route('defender.dashboard.permissions') }}" class="btn btn-default btn-block">
+                        {{ trans('artesaos::dashboard.navigation.permissions') }}
+                    </a>
                 </div>
             </div>
 

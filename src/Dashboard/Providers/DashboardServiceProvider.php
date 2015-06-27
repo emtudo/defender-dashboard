@@ -19,14 +19,14 @@ class DashboardServiceProvider extends ServiceProvider
     }
 
     public function register()
-	{
-		$this->registerBindings();
+    {
+        $this->registerBindings();
 
-		if ( ! isset($this->app['flash']))
-		{
-			$this->app->register('Laracasts\Flash\FlashServiceProvider');
-		}
-	}
+        if ( ! isset($this->app['flash']))
+        {
+            $this->app->register('Laracasts\Flash\FlashServiceProvider');
+        }
+    }
 
     protected function registerBindings()
     {
@@ -43,6 +43,8 @@ class DashboardServiceProvider extends ServiceProvider
                 return $app['defender.user'];
             }
         );
+
+        $this->mergeConfigFrom(__DIR__.'/../../resources/config/dashboard.php', 'dashboard');
     }
 
     /**
@@ -53,9 +55,9 @@ class DashboardServiceProvider extends ServiceProvider
         /** @var \Illuminate\Routing\Router $router */
         $router = $this->app['router'];
 
-        //TODO: Made that prefix configurable
+        $prefix = $this->app['config']->get('dashboard.prefix', 'defender');
         
-        $router->group(['prefix' => 'defender'], function () use ($router) {
+        $router->group(['prefix' => $prefix], function () use ($router) {
             require __DIR__.'/../../resources/routes.php';
         });
     }
@@ -65,8 +67,9 @@ class DashboardServiceProvider extends ServiceProvider
      */
     protected function publishDashboardConfiguration()
     {
-		# Publish config
-		# Settings like prefix definition
+        $this->publishes([
+            __DIR__.'/../../resources/config/dashboard.php' => config_path('dashboard.php')
+        ], 'config');
     }
 
     protected function publishDashboardAssets()
@@ -89,8 +92,8 @@ class DashboardServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang/artesaos', 'artesaos');
     }
 
-	public function provides()
-	{
-		return ['defender.user'];
-	}
+    public function provides()
+    {
+        return ['defender.user'];
+    }
 }

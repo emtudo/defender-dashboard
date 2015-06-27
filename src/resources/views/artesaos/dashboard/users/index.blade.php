@@ -20,10 +20,12 @@
                                     <td class="text-center">{{ $user->created_at }}</td>
                                     <td class="text-center">
                                         <span class="btn-group">
-                                            <a class="btn btn-primary btn-xs" href="{{ url('defender/users/' . $user->id) }}">
+                                            <a class="btn btn-primary btn-xs"
+                                                href="{{ route('defender.dashboard.users.show', [ $user->id ]) }}">
                                                 <span class="glyphicon glyphicon-search"></span>
                                             </a>
-                                            <a class="btn btn-warning btn-xs" href="{{ url('artesaos/users/' . $user->id . '/edit') }}">
+                                            <a class="btn btn-warning btn-xs"
+                                                href="{{ route('defender.dashboard.users.edit', [ $user->id ]) }}">
                                                 <span class="glyphicon glyphicon-pencil"></span>
                                             </a>
                                             <a class="btn btn-danger btn-xs" href="#">
