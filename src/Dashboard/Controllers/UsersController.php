@@ -20,7 +20,7 @@ class UsersController extends Controller
     /**
      * UserController construct
      * 
-     * @param UserRepository $userRepo [description]
+     * @param UserRepository $userRepo The user repository
      */
     public function __construct(UserRepository $userRepo)
     {

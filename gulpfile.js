@@ -13,8 +13,10 @@ gulp.task('clean-styles', function() {
 
 gulp.task('scripts', ['clean-scripts'], function() {
     gulp.src([
-        './bower_components/jquery/dist/jquery.min.js',
-        './bower_components/bootstrap/dist/js/bootstrap.min.js'
+        './bower_components/jquery/dist/jquery.js',
+        './bower_components/bootstrap/dist/js/bootstrap.js',
+        './bower_components/vue/dist/vue.js',
+        './bower_components/vue-resource/dist/vue-resource.js'
     ]).pipe(concat('vendor.min.js'))
       .pipe(uglify())
       .pipe(gulp.dest('./src/resources/assets/js/'));

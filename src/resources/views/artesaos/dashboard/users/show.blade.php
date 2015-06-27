@@ -7,6 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-user"></span>
                         {{ trans('artesaos::dashboard.users.show.heading') }}
                         {{ $user->name }}
                     </h3>
@@ -26,7 +27,10 @@
         <div class="col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{ trans('artesaos::dashboard.general.roles') }}</h3>
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-align-justify"></span>
+                        {{ trans('artesaos::dashboard.general.roles') }}
+                    </h3>
                 </div>
                 <div class="panel-body">
                     @if(count($user->roles) > 0)
@@ -37,7 +41,7 @@
                         @endforeach
                     @else
                         <div class="text-danger text-center">
-                            <strong>{{ trans('artesaos::dashboad.users.show.roles.empty') }}</strong>
+                            <p><strong>{{ trans('artesaos::dashboard.users.show.roles.empty') }}</strong></p>
                         </div>
                     @endif
                 </div>
@@ -46,7 +50,9 @@
         <div class="col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{ trans('artesaos::dashboard.general.permissions') }}</h3>
+                    <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-lock"></span>
+                        {{ trans('artesaos::dashboard.general.permissions') }}</h3>
                 </div>
                 <div class="panel-body">
                     @if (count($user->permissions) > 0)
@@ -57,7 +63,9 @@
                         @endforeach
                     @else
                         <div class="text-danger text-center">
-                            <strong>{{ trans('artesaos::dashboard.users.show.permissions.empty') }}</strong>
+                            <p>
+                                <strong>{{ trans('artesaos::dashboard.users.show.permissions.empty') }}</strong>
+                            </p>
                         </div>
                     @endif
                 </div>
@@ -65,14 +73,31 @@
         </div>
     </div>
 
+    <!-- Roles & Permissions actions -->
+    <div class="pull-left">
+        <div class="btn-group">
+            <button class="btn btn-success">
+                <span class="glyphicon glyphicon-plus"></span>
+                {{ trans('artesaos::dashboard.users.show.roles.add') }}
+            </button>
+            <button href="#" class="btn btn-success">
+                <span class="glyphicon glyphicon-plus"></span>
+                {{ trans('artesaos::dashboard.users.show.permissions.add') }}
+            </button>
+        </div>
+    </div>
+    <!--/Roles & Permissions actions -->
+
     <!-- Actions -->
-    <div class="text-right">
+    <div class="pull-right">
         <div class="btn-group">
             <a href="{{ url('defender/users/' . $user->id . '/edit')  }}" class="btn btn-warning">
-                <span class="glyphicon glyphicon-pencil"></span> {{ trans('artesaos::dashboard.general.actions.edit') }}
+                <span class="glyphicon glyphicon-pencil"></span>
+                {{ trans('artesaos::dashboard.general.actions.edit') }}
             </a>
             <a href="#" class="btn btn-danger">
-                <span class="glyphicon glyphicon-remove"></span> {{ trans('artesaos::dashboard.general.actions.delete') }}
+                <span class="glyphicon glyphicon-remove"></span>
+                {{ trans('artesaos::dashboard.general.actions.delete') }}
             </a>
         </div>
     </div>

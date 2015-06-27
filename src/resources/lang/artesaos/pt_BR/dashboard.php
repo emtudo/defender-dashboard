@@ -19,10 +19,12 @@ return [
 			'created_at' => 'Data de Cadastro',
 			'updated_at' => 'Última Atualização',
 			'roles' => [
-				'empty' => 'Nenhum grupo atribuído para este usuário.'
+				'empty' => 'Nenhum grupo atribuído para este usuário.',
+                'add'   => 'Grupo'
 			],
 			'permissions' => [
-				'empty' => 'Este usuário não possui permissões específicas atribuídas.'
+				'empty' => 'Este usuário não possui permissões específicas atribuídas.',
+                'add' => 'Permissão'
 			]
         ]
     ],
