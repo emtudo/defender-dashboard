@@ -33,5 +33,6 @@
       @yield('content')
     </div>
     <script type="text/javascript" src="{{ url('artesaos/dashboard/js/vendor.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url('artesaos/dashboard/js/app.js') }}"></script>
 </body>
 </html>

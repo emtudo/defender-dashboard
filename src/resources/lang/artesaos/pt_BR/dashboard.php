@@ -32,7 +32,12 @@ return [
     'roles' => [
         'index' => [
             'empty' => 'Não existem grupos cadastrados.',
-            'heading' => 'Lista de Grupos'
+            'heading' => 'Lista de Grupos',
+            'add' => [
+                'heading' => 'Cadastrar Grupo',
+                'action' => 'Cadastrar',
+                'label' => 'Nome do Grupo'
+            ]
         ]
     ],
 

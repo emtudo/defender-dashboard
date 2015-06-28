@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -36,6 +36,26 @@
                     </div>
                 @endif
                 <div class="pull-right">{!! $roles->render() !!}</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        {{ trans('artesaos::dashboard.roles.index.add.heading') }}
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="role-name">{{ trans('artesaos::dashboard.roles.index.add.label') }}</label>
+                            <input type="text" id="role-name" class="form-control">
+                        </div>
+                        <button type="button" class="btn btn-default">
+                            {{ trans('artesaos::dashboard.roles.index.add.action') }}
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
