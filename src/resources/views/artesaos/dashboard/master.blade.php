@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Defender Dashboard</title>
+    <meta id="csrf-token" value="{{ csrf_token() }}"/>
     <link rel="stylesheet" href="{{ url('artesaos/dashboard/css/vendor.min.css') }}">
     <style type="text/css">body { padding-top: 70px; }</style>
 </head>
@@ -32,6 +33,7 @@
       @include('flash::message')
       @yield('content')
     </div>
+    <script type="text/javascript">var base_prefix = '/{{ config('dashboard.prefix') }}/';</script>
     <script type="text/javascript" src="{{ url('artesaos/dashboard/js/vendor.min.js') }}"></script>
     <script type="text/javascript" src="{{ url('artesaos/dashboard/js/app.js') }}"></script>
 </body>

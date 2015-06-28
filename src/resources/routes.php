@@ -22,11 +22,26 @@ $router->get('users/{users}/edit', [
 	'uses' => 'Artesaos\Defender\Controllers\UsersController@edit'
 ]);
 
-
 /* Roles routes */
 $router->get('roles', [
 	'as' => 'defender.dashboard.roles',
 	'uses' => 'Artesaos\Defender\Controllers\RolesController@index'
+]);
+
+/*
+ * Show a role details
+ */
+$router->get('roles/{roles}', [
+    'as' => 'defender.dashboard.roles.show',
+    'uses' => 'Artesaos\Defender\Controllers\RolesController@show'
+]);
+
+/*
+ * Creates a new role
+ */
+$router->post('roles', [
+    'as' => 'defender.dashboard.roles.store',
+    'uses' => 'Artesaos\Defender\Controllers\RolesController@store'
 ]);
 
 /* Permissions routes */
