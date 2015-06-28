@@ -2,6 +2,8 @@
 
 return [
 
-    'prefix' => 'dashboard'
+    'prefix' => 'dashboard',
+
+    'permission_name' => 'dashboard.manage'
 
 ];
