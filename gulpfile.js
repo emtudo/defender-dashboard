@@ -16,7 +16,9 @@ gulp.task('scripts', ['clean-scripts'], function() {
         './bower_components/jquery/dist/jquery.js',
         './bower_components/bootstrap/dist/js/bootstrap.js',
         './bower_components/vue/dist/vue.js',
-        './bower_components/vue-resource/dist/vue-resource.js'
+        './bower_components/vue-resource/dist/vue-resource.js',
+        './bower_components/ladda/dist/spin.min.js',
+        './bower_components/ladda/dist/ladda.min.js'
     ]).pipe(concat('vendor.min.js'))
       .pipe(uglify())
       .pipe(gulp.dest('./src/resources/assets/js/'));
@@ -24,7 +26,8 @@ gulp.task('scripts', ['clean-scripts'], function() {
 
 gulp.task('styles', ['clean-styles'], function() {
     gulp.src([
-        './bower_components/bootstrap/dist/css/bootstrap.min.css'
+        './bower_components/bootstrap/dist/css/bootstrap.min.css',
+        './bower_components/ladda/dist/ladda-themeless.min.css'
     ]).pipe(concat('vendor.min.css'))
       .pipe(gulp.dest('./src/resources/assets/css/'));
 
