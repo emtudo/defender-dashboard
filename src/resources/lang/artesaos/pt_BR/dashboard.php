@@ -1,69 +1,77 @@
 <?php
 
+/*
+ * Favor ordenar pelo índice recursivamente.
+ */
+
 return [
+   "general"     => [
+       "actions"     => [
+           "add"    => "Adicionar",
+           "delete" => "Excluir",
+           "edit"   => "Editar",
+           "update" => "Atualizar"
+       ],
 
-    'index' => [
-        'manage_users' => 'Gerenciar Usuários',
-        'manage_roles' => 'Gerenciar Grupos',
-        'manage_permissions' => 'Gerenciar Permissões'
-    ],
+       "permissions" => "Permissões",
+       "roles"       => "Grupos",
+       "users"       => "Usuários"
+   ],
 
-    'users' => [
-        'index' => [
-            'heading' => 'Usuário Registrados',
-            'empty'   => 'Nenhum usuário cadastrado.'
-        ],
-        'show' => [
-            'heading' => 'Detalhes do Usuário',
-			'email' => 'Email',
-			'created_at' => 'Data de Cadastro',
-			'updated_at' => 'Última Atualização',
-			'roles' => [
-				'empty' => 'Nenhum grupo atribuído para este usuário.',
-                'add'   => 'Grupo'
-			],
-			'permissions' => [
-				'empty' => 'Este usuário não possui permissões específicas atribuídas.',
-                'add' => 'Permissão'
-			]
-        ]
-    ],
+   "index"       => [
+       "manage_permissions" => "Gerenciar Permissões",
+       "manage_roles"       => "Gerenciar Grupos",
+       "manage_users"       => "Gerenciar Usuários"
+   ],
 
-    'roles' => [
-        'index' => [
-            'empty' => 'Não existem grupos cadastrados.',
-            'heading' => 'Lista de Grupos',
-            'add' => [
-                'heading' => 'Cadastrar Grupo',
-                'action' => 'Cadastrar',
-                'label' => 'Nome do Grupo'
-            ]
-        ]
-    ],
+   "navigation"  => [
+       "brand"       => "Defender Dashboard",
+       "permissions" => "Permissões",
+       "roles"       => "Grupos",
+       "users"       => "Usuários"
+   ],
 
-    'permissions' => [
-        'index' => [
-            'empty' => 'Não existem permissões cadastrada.',
-            'heading' => 'Lista de Permissões'
-        ]
-    ],
+   "permissions" => [
+       "index" => [
+           "empty"   => "Não existem permissões cadastrada.",
+           "heading" => "Lista de Permissões"
+       ]
+   ],
 
-    'navigation' => [
-        'brand' => 'Defender Dashboard',
-        'users' => 'Usuários',
-        'roles' => 'Grupos',
-        'permissions' => 'Permissões'
-    ],
+   "roles"       => [
+       "index" => [
+           "add"     => [
+               "action"  => "Cadastrar",
+               "heading" => "Cadastrar Grupo",
+               "label"   => "Nome do Grupo"
+           ],
 
-	'general' => [
-		'users' => 'Usuário',
-		'roles' => 'Grupos',
-		'permissions' => 'Permissões',
-		'actions' => [
-			'add' => 'Adicionar',
-			'edit' => 'Editar',
-			'delete' => 'Excluir',
-			'update' => 'Atualizar'
-		]
-	]
+           "empty"   => "Não existem grupos cadastrados.",
+           "heading" => "Lista de Grupos"
+       ]
+   ],
+
+   "users"       => [
+       "index" => [
+           "empty"   => "Nenhum usuário cadastrado.",
+           "heading" => "Usuário Registrados"
+       ],
+       "show"  => [
+           "created_at"  => "Data de Cadastro",
+           "email"       => "Email",
+           "heading"     => "Detalhes do Usuário",
+
+           "permissions" => [
+               "add"   => "Permissão",
+               "empty" => "Este usuário não possui permissões específicas atribuídas."
+           ],
+
+           "roles"       => [
+               "add"   => "Grupo",
+               "empty" => "Nenhum grupo atribuído para este usuário."
+           ],
+           
+           "updated_at"  => "Última Atualização"
+       ]
+   ],
 ];
