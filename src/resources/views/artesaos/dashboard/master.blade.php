@@ -16,7 +16,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ url('defender') }}">
+          <a class="navbar-brand" href="{{ route('defender.dashboard.index') }}">
               {{ trans('artesaos::dashboard.navigation.brand') }}
           </a>
         </div>
