@@ -31,9 +31,7 @@ class RolesController extends Controller
 	 */
 	public function index()
 	{
-		$roles = $this->rolesRepository->paginate(10);
-
-		return view('artesaos::dashboard.roles.index', compact('roles'));
+		return view('artesaos::dashboard.roles.index');
 	}
 
 	/**

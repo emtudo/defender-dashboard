@@ -1,7 +1,8 @@
 @extends('artesaos::dashboard.master')
 @section('content')
     <div class="row">
-        <div class="col-sm-8">
+        <!-- Roles list -->
+        <div class="col-sm-8" id="roles-list-container">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -9,33 +10,30 @@
                         {{ trans('artesaos::dashboard.roles.index.heading') }}
                     </h3>
                 </div>
-                @if (count($roles) > 0)
-                    <table class="table table-bordered">
-                        <tbody>
-                            @foreach ($roles as $role)
-                                <tr>
-                                    <td>{{ $role->name }}</td>
-                                    <td class="text-center">
-                                        <div class="btn-group">
-                                            <a href="#" class="btn btn-primary btn-xs">
-                                                <span class="glyphicon glyphicon-search"></span>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                @else
-                    <div class="panel-body">
-                        <span class="text-danger text-center">
-                            <strong>{{ trans('artesaos::dashboard.roles.index.empty') }}</strong>
-                        </span>
-                    </div>
-                @endif
-                <div class="pull-right">{!! $roles->render() !!}</div>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr v-repeat="roles.data">
+                            <td>@{{ id }}</td>
+                            <td>@{{ name }}</td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <a href="#" class="btn btn-primary btn-xs">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="panel-body" v-show="roles.data.length === 0">
+                    <span class="text-danger text-center">
+                        <strong>{{ trans('artesaos::dashboard.roles.index.empty') }}</strong>
+                    </span>
+                </div>
             </div>
         </div>
+        <!--/Roles list -->
+        <!-- Add a new role -->
         <div class="col-sm-4" id="add-role-container">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -60,5 +58,6 @@
                 </div>
             </div>
         </div>
+        <!--/Add a new role -->
     </div>
 @endsection

@@ -49,3 +49,14 @@ $router->get('permissions', [
 	'as' => 'defender.dashboard.permissions',
 	'uses' => 'Artesaos\Defender\Controllers\PermissionsController@index'
 ]);
+
+
+/**
+ * Dashboard API
+ */
+$router->group(['prefix' => 'api'], function() use ($router) {
+
+	// Fetch all roles
+	$router->get('roles', 'Artesaos\Defender\Controllers\API\RolesController@index');
+
+});

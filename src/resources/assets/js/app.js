@@ -1,5 +1,7 @@
 (function() {
 
+    /* global base_prefix */
+
     // Setup the token
     Vue.http.headers.common['X-CSRF-TOKEN'] = $('#csrf-token').attr('value');
 
@@ -18,6 +20,29 @@
         }
 
     });
+
+    var rolesList = new Vue({
+
+        el: '#roles-list-container',
+
+        data: {
+            roles: {
+                data: []
+            }
+        },
+
+        ready: function() {
+            return this.fetchRoles();
+        },
+
+        methods: {
+            fetchRoles: function() {
+                return this.$http.get(base_prefix + 'api/roles', function(data) {
+                    this.$set('roles', data);
+                });
+            }
+        }
+    })
 
     var addRole = new Vue({
 
