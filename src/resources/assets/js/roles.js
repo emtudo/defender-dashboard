@@ -1,25 +1,8 @@
 (function() {
 
-    /* global base_prefix */
+    /* global base_prefix, Vue */
 
-    // Setup the token
-    Vue.http.headers.common['X-CSRF-TOKEN'] = $('#csrf-token').attr('value');
-
-    var userShow = new Vue({
-
-        el: '#user-details',
-
-        data: {
-
-            user: {},
-
-            roles: [],
-
-            permissions: []
-
-        }
-
-    });
+    'use strict';
 
     var rolesList = new Vue({
 

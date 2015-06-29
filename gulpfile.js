@@ -3,10 +3,12 @@ var gulp   = require('gulp'),
     uglify = require('gulp-uglify'),
     clean  = require('gulp-clean');
 
+// Clean scripts directory
 gulp.task('clean-scripts', function() {
     return gulp.src('./src/resources/dist/js/', { read: false }).pipe(clean());
 });
 
+// Clean styles directory
 gulp.task('clean-styles', function() {
     return gulp.src('./src/resources/dist/css/', { read: false }).pipe(clean());
 });
@@ -35,7 +37,8 @@ gulp.task('scripts', ['clean-scripts'], function() {
      * App File compilation
      */
     gulp.src([
-        './src/resources/assets/js/app.js'
+        './src/resources/assets/js/users.js',
+        './src/resources/assets/js/roles.js'
     ])
     .pipe(concat('app.min.js'))
     .pipe(uglify())
@@ -57,4 +60,10 @@ gulp.task('styles', ['clean-styles'], function() {
     .pipe(gulp.dest('./src/resources/dist/fonts/'));
 });
 
+// Watch for changes
+gulp.task('watch', function() {
+    gulp.watch('./src/resources/assets/js/**/*.js', ['scripts']);
+});
+
+// Default gulp task
 gulp.task('default', ['scripts', 'styles']);
