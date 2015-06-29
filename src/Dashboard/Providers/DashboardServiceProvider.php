@@ -5,10 +5,17 @@ namespace Artesaos\Defender\Providers;
 use Illuminate\Support\ServiceProvider;
 use Artesaos\Defender\Repositories\Eloquent\EloquentUserRepository;
 
+/**
+ * Class DashboardServiceProvider
+ * @package Artesaos\Defender\Providers
+ */
 class DashboardServiceProvider extends ServiceProvider
 {
     protected $defer = false;
 
+	/**
+	 * Service provider boot
+	 */
     public function boot()
     {
         $this->registerRoutes();
@@ -18,6 +25,9 @@ class DashboardServiceProvider extends ServiceProvider
         $this->publishDashboardAssets();
     }
 
+	/**
+	 * Service provider registration
+	 */
     public function register()
     {
         $this->registerBindings();
@@ -28,6 +38,9 @@ class DashboardServiceProvider extends ServiceProvider
         }
     }
 
+	/**
+	 * Register IoC Bindings
+	 */
     protected function registerBindings()
     {
         $userClass = $this->app['config']->get('auth.model');
@@ -72,10 +85,13 @@ class DashboardServiceProvider extends ServiceProvider
         ], 'config');
     }
 
+	/**
+	 * Publish dashboard assets to the public path
+	 */
     protected function publishDashboardAssets()
     {
         $this->publishes([
-            __DIR__.'/../../resources/assets' => public_path('artesaos/dashboard')
+            __DIR__.'/../../resources/dist' => public_path('artesaos/dashboard')
         ], 'assets');
     }
 
@@ -87,11 +103,18 @@ class DashboardServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../../resources/views/artesaos', 'artesaos');
     }
 
+	/**
+	 * Dashboard translations
+	 */
     protected function loadDashboardTranslations()
     {
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang/artesaos', 'artesaos');
     }
 
+	/**
+	 *
+	 * @return array
+	 */
     public function provides()
     {
         return ['defender.user'];
