@@ -13,9 +13,9 @@ class DashboardServiceProvider extends ServiceProvider
 {
     protected $defer = false;
 
-	/**
-	 * Service provider boot
-	 */
+    /**
+     * Service provider boot
+     */
     public function boot()
     {
         $this->registerRoutes();
@@ -25,22 +25,21 @@ class DashboardServiceProvider extends ServiceProvider
         $this->publishDashboardAssets();
     }
 
-	/**
-	 * Service provider registration
-	 */
+    /**
+     * Service provider registration
+     */
     public function register()
     {
         $this->registerBindings();
 
-        if ( ! isset($this->app['flash']))
-        {
+        if (! isset($this->app['flash'])) {
             $this->app->register('Laracasts\Flash\FlashServiceProvider');
         }
     }
 
-	/**
-	 * Register IoC Bindings
-	 */
+    /**
+     * Register IoC Bindings
+     */
     protected function registerBindings()
     {
         $userClass = $this->app['config']->get('auth.model');
@@ -68,7 +67,7 @@ class DashboardServiceProvider extends ServiceProvider
         /** @var \Illuminate\Routing\Router $router */
         $router = $this->app['router'];
 
-        $prefix = $this->app['config']->get('dashboard.prefix', 'defender');
+        $prefix = $this->app['config']->get('dashboard.route_prefix', 'dashboard');
         
         $router->group(['prefix' => $prefix], function () use ($router) {
             require __DIR__.'/../../resources/routes.php';
@@ -85,9 +84,9 @@ class DashboardServiceProvider extends ServiceProvider
         ], 'config');
     }
 
-	/**
-	 * Publish dashboard assets to the public path
-	 */
+    /**
+     * Publish dashboard assets to the public path
+     */
     protected function publishDashboardAssets()
     {
         $this->publishes([
@@ -103,18 +102,18 @@ class DashboardServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../../resources/views/artesaos', 'artesaos');
     }
 
-	/**
-	 * Dashboard translations
-	 */
+    /**
+     * Dashboard translations
+     */
     protected function loadDashboardTranslations()
     {
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang/artesaos', 'artesaos');
     }
 
-	/**
-	 *
-	 * @return array
-	 */
+    /**
+     *
+     * @return array
+     */
     public function provides()
     {
         return ['defender.user'];

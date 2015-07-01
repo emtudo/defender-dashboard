@@ -1,11 +1,18 @@
 <?php
 
 return [
+    /*
+     * Default prefix to the dashboard.
+     */
+    'route_prefix' => 'dashboard',
 
-    'prefix' => 'dashboard',
-
+    /*
+     * Default permission user should have to access the dashboard.
+     */
     'permission_name' => 'dashboard.manage',
 
-    'system' => '/',
-
+    /*
+     * Default url used to redirect user to front/admin of your the system.
+     */
+    'system_url' => '/',
 ];
