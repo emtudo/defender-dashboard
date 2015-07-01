@@ -4,6 +4,8 @@ return [
 
     'prefix' => 'dashboard',
 
-    'permission_name' => 'dashboard.manage'
+    'permission_name' => 'dashboard.manage',
+
+    'system' => '/',
 
 ];
