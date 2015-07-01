@@ -25,7 +25,7 @@
             <li><a href="{{ route('defender.dashboard.users') }}">{{ trans('artesaos::dashboard.navigation.users') }}</a></li>
             <li><a href="{{ route('defender.dashboard.roles') }}">{{ trans('artesaos::dashboard.navigation.roles') }}</a></li>
             <li><a href="{{ route('defender.dashboard.permissions') }}">{{ trans('artesaos::dashboard.navigation.permissions') }}</a></li>
-            <li><a href="{{ config('dashboard.system') }}">Sistema</a></li>
+            <li><a href="{{ url(config('dashboard.system_url', '/')) }}">{{ trans('artesaos::dashboard.general.back_to_system')}}</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

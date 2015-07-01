@@ -13,6 +13,7 @@ return [
            "update" => "Update"
        ],
 
+       "back_to_system" => "Back to the System",
        "permissions" => "Permissions",
        "roles"       => "Roles",
        "users"       => "Users"
