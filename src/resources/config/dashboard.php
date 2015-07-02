@@ -9,7 +9,11 @@ return [
     /*
      * Default permission user should have to access the dashboard.
      */
-    'permission_name' => 'dashboard.manage',
+    'security' => [
+        'protected'          => true,
+        'middleware'         => ['auth','needsPermission'],
+        'permission_name'    => 'dashboard.manage',
+    ],
 
     /*
      * Default url used to redirect user to front/admin of your the system.
