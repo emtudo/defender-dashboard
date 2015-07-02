@@ -1,6 +1,7 @@
 <?php
 
 /** @var \Illuminate\Routing\Router $router */
+
 $router->get('/', [
     'as'   => 'defender.dashboard.index',
     'uses' => 'Artesaos\Defender\Controllers\DashboardController@index'
