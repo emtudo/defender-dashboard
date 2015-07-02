@@ -60,4 +60,4 @@ $router->group(['middleware'=>['auth','needsPermission'], 'can' => config('dashb
     	$router->get('roles', 'Artesaos\Defender\Controllers\API\RolesController@index');
 
     });
-}]);
+});
