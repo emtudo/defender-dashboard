@@ -69,9 +69,17 @@ class DashboardServiceProvider extends ServiceProvider
 
         $prefix = $this->app['config']->get('dashboard.route_prefix', 'dashboard');
 
-        $permission = $this->app['config']->get('dashboard.permission_name');
+        $group = [];
+        $group['prefix'] = $prefix;
 
-        $router->group(['prefix' => $prefix, 'middleware' => ['auth','needsPermission'], 'can' => $permission], function () use ($router) {
+        $security = $this->app['config']->get('dashboard.security.protected', true);
+
+        if ($security) {
+            $group['middleware']=$this->app['config']->get('dashboard.security.middleware', ['auth', 'needsPermission']);
+            $group['can']=$this->app['config']->get('dashboard.security.permission_name', 'dashboard.manage');
+        }
+
+        $router->group($group, function () use ($router) {
             require __DIR__.'/../../resources/routes.php';
         });
     }
