@@ -34,7 +34,7 @@
       @include('flash::message')
       @yield('content')
     </div>
-    <script type="text/javascript">var base_prefix = '/{{ config('dashboard.prefix') }}/';</script>
+    <script type="text/javascript">var base_prefix = '/{{ config('dashboard.route_prefix') }}/';</script>
     <script type="text/javascript" src="{{ url('artesaos/dashboard/js/vendor.min.js') }}"></script>
     <script type="text/javascript" src="{{ url('artesaos/dashboard/js/app.min.js') }}"></script>
 </body>

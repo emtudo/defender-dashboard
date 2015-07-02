@@ -28,8 +28,8 @@ return [
    "navigation"  => [
        "brand"       => "Defender Dashboard",
        "permissions" => "Permissions",
-       "roles"       => "Groups",
-       "users"       => "Roles"
+       "roles"       => "Roles",
+       "users"       => "Users"
    ],
 
    "permissions" => [
