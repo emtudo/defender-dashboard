@@ -1,4 +1,4 @@
-# Não use este cdigo, eu só mantenho ele para lembrar de como eu programava antigamente.
+# Não use este código, eu só mantenho ele para lembrar de como eu programava antigamente.
 
 ## Defender Dashboard
 
